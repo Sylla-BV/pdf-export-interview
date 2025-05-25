@@ -1,6 +1,9 @@
-import { pgTable, serial, text } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
 
-export const users = pgTable('users', {
+export const pdfExports = pgTable('pdf_exports', {
   id: serial('id').primaryKey(),
-  name: text('name'),
-}); 
+  fileName: text('file_name'),
+  tempUrl: text('temp_url'),
+  reference: text('reference'),
+  createdAt: timestamp('created_at').defaultNow(),
+});

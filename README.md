@@ -1,3 +1,33 @@
+## How to Run Locally
+
+Clone the repository and install dependencies.
+
+Create a `.env.local` file in the root directory.
+
+Inside `.env.local`, add the following environment variables:
+
+- `NEXT_PUBLIC_BASE_URL`: This should be your public ngrok URL that forwards to your local server on port 3000.
+- `DATABASE_URL`: A connection string to a local PostgreSQL database. You can use a local database or run one using Docker.
+- `QSTASH_URL`: The QStash publish URL from your Upstash account.
+- `QSTASH_TOKEN`: Your QStash access token.
+- `QSTASH_CURRENT_SIGNING_KEY`: The current signing key from your QStash dashboard.
+- `QSTASH_NEXT_SIGNING_KEY`: The next signing key, also from your QStash dashboard.
+
+Make sure your PostgreSQL server is running and accessible using the connection string you provide.
+
+Start ngrok and expose port 3000. Copy the generated HTTPS URL and assign it to `NEXT_PUBLIC_BASE_URL` in your `.env.local` file.
+
+Once your environment is set up, start the development server.
+
+Make sure:
+
+- Your database is up and reachable
+- Ngrok is running and correctly forwarding requests to port 3000
+- Your `.env.local` file is configured correctly
+- Your QStash credentials are valid
+
+You’re now ready to run the project locally.
+
 ## Interview Assignment
 
 ### Introduction
