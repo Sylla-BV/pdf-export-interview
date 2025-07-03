@@ -18,3 +18,4 @@ A simple page that has a button, that triggers a background job. This background
 - You have to define a table for these PDF exports
 - Download URL expires in 120 seconds
 - As soon as the database is populated with this new PDF export, we have to update the UI to show the new Download URL
+- Make use of NextJS best practices
