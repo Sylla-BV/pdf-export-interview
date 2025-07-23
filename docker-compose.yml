@@ -1,0 +1,51 @@
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  qstash:
+    build:
+      context: .
+      dockerfile: Dockerfile.qstash
+    working_dir: /app
+    volumes:
+      - .:/app
+    environment:
+      QSTASH_TOKEN: eyJVc2VySUQiOiJkZWZhdWx0VXNlciIsIlBhc3N3b3JkIjoiZGVmYXVsdFBhc3N3b3JkIn0=
+      QSTASH_CURRENT_SIGNING_KEY: sig_7kYjw48mhY7kAjqNGcy6cr29RJ6r
+      QSTASH_NEXT_SIGNING_KEY: sig_5ZB6DVzB1wjE8S6rZ7eenA8Pdnhs
+    command: >
+      qstash dev --port 3002 \
+        --token $QSTASH_TOKEN \
+        --current-signing-key $QSTASH_CURRENT_SIGNING_KEY \
+        --next-signing-key $QSTASH_NEXT_SIGNING_KEY
+    ports:
+      - "3002:3002"
+
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      QSTASH_TOKEN: ${QSTASH_TOKEN}
+      QSTASH_CURRENT_SIGNING_KEY: ${QSTASH_CURRENT_SIGNING_KEY}
+      QSTASH_NEXT_SIGNING_KEY: ${QSTASH_NEXT_SIGNING_KEY}
+      QSTASH_URL: ${QSTASH_URL}
+    depends_on:
+      - db
+      - qstash
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+volumes:
+  pgdata: 

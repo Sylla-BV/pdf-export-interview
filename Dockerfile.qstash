@@ -1,0 +1,7 @@
+FROM node:20-slim
+
+WORKDIR /app
+
+RUN npm install -g @upstash/qstash-cli@2.28.3
+
+CMD ["qstash"]

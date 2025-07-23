@@ -1,21 +1,33 @@
-## Interview Assignment
+## 🚀 Quick Start
 
-### Introduction
+### ✅ Prerequisites
 
-Within Sylla we have an ‘event-driven’ architecture which means that many user actions trigger certain events that in turn trigger background jobs to run. To test your skills, we’d like you to solve a ‘simplified’ version of a task on our backlog which involves message queue’s and real time data updates.
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
-### What do you need to build
+## 🐳 Run the App
 
-The idea is that we ‘mimmic’ some existing production behaviour of a PDF export. However, we’d like a DB table to store those PDF’s and have expiring URL’s to those PDF’s.
+To start everything (app, DB, QStash) in one go:
 
-A simple page that has a button, that triggers a background job. This background job produces a PDF url (this will be a dummy URL that we will specify). Then, the app would update the DB, store that ‘pdf export’, and subsequently will produce a temporary URL for downloading that. The link should expire in 120 seconds. That link, as soon as it’s available, should show up on the page where the trigger is.
+```bash
+docker compose up --build
+```
 
-**Requirements**:
+This will:
+- 🔧 Build the Next.js app
+- 🐘 Start PostgreSQL (port `5432`)
+- 💬 Start QStash Dev Server (port `3002`)
+- ⚙️ Run DB migrations
+- 🧠 Start the dev server with hot reload
 
-- Use QStash as a message queue ([docs here](https://upstash.com/docs/qstash/overall/getstarted))
-- The PDF URL that you can use is [`this url here`](https://sylla-dev-public-bucket.s3.eu-central-1.amazonaws.com/books/47f4cad9aa3c005ce22fbdef05545308495bd571c55e02f7ae69353ac831d787)
-- The user never sees this source URL
-- You have to define a table for these PDF exports
-- Download URL expires in 120 seconds
-- As soon as the database is populated with this new PDF export, we have to update the UI to show the new Download URL
-- Make use of NextJS best practices
+🌐 App available at:
+- **Frontend**: [http://localhost:3000](http://localhost:3000)
+- **QStash Dev Server**: [http://localhost:3002](http://localhost:3002)
+
+## 💡 Notes
+
+### 🧪 Demo Mode (current)
+- Uses **client-side polling** to check PDF status.
+
+### 🚀 Production Mode (Recommended)
+- Replace polling with **WebSocket** for real-time updates.

@@ -6,14 +6,10 @@ export const metadata: Metadata = {
   description: 'A Next.js project for interview candidates',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang='en'>
-      <body className='antialiased'>{children}</body>
-    </html>
-  );
-}
+const RootLayout = ({ children }: { children: React.ReactNode }) => (
+  <html lang='en'>
+    <body className='antialiased'>{children}</body>
+  </html>
+);
+
+export default RootLayout;
