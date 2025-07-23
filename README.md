@@ -7,7 +7,12 @@
 
 ## 🐳 Run the App
 
-To start everything (app, DB, QStash) in one go:
+**Step 1**: Copy environment variables
+```bash
+cp example.env .env
+```
+
+**Step 2**: Start everything (app, DB, QStash) in one go:
 
 ```bash
 docker compose up --build

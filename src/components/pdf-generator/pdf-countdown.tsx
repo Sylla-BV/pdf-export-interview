@@ -10,7 +10,12 @@ interface PdfCountdownProps {
 const INTERVAL = 1000;
 
 const PdfCountdown: React.FC<PdfCountdownProps> = ({ expiresAt, onExpire }) => {
-  const [timeRemaining, setTimeRemaining] = useState<number>(0);
+  const [timeRemaining, setTimeRemaining] = useState<number>(() => {
+    const now = new Date().getTime();
+    const expiry = expiresAt.getTime();
+
+    return Math.max(0, expiry - now);
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {

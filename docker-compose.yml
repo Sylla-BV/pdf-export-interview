@@ -19,9 +19,9 @@ services:
     volumes:
       - .:/app
     environment:
-      QSTASH_TOKEN: eyJVc2VySUQiOiJkZWZhdWx0VXNlciIsIlBhc3N3b3JkIjoiZGVmYXVsdFBhc3N3b3JkIn0=
-      QSTASH_CURRENT_SIGNING_KEY: sig_7kYjw48mhY7kAjqNGcy6cr29RJ6r
-      QSTASH_NEXT_SIGNING_KEY: sig_5ZB6DVzB1wjE8S6rZ7eenA8Pdnhs
+      QSTASH_TOKEN: ${QSTASH_TOKEN}
+      QSTASH_CURRENT_SIGNING_KEY: ${QSTASH_CURRENT_SIGNING_KEY}
+      QSTASH_NEXT_SIGNING_KEY: ${QSTASH_NEXT_SIGNING_KEY}
     command: >
       qstash dev --port 3002 \
         --token $QSTASH_TOKEN \
