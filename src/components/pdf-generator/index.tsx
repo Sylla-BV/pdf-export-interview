@@ -12,16 +12,14 @@ const PdfGenerator: React.FC = () => {
   const { state, generatePdf, resetPdf } = usePdfGenerator();
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      <div className="flex gap-2">
+    <div className='flex flex-col items-center justify-center gap-4'>
+      <div className='flex gap-2'>
         <Button onClick={generatePdf} disabled={state.loading || state.pdfReady}>
           {state.loading ? 'Generating...' : 'Generate PDF'}
         </Button>
       </div>
 
-      {state.pdfReady && state.token && (
-        <PdfDownloadLink token={state.token} />
-      )}
+      {state.pdfReady && state.token && <PdfDownloadLink token={state.token} />}
 
       {state.pdfReady && state.expiresAt && (
         <PdfCountdown expiresAt={state.expiresAt} onExpire={resetPdf} />
