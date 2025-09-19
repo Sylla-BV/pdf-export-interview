@@ -16,6 +16,7 @@ A simple page that has a button, that triggers a background job. This background
 - The PDF URL that you can use is [`this url here`](https://sylla-dev-public-bucket.s3.eu-central-1.amazonaws.com/books/47f4cad9aa3c005ce22fbdef05545308495bd571c55e02f7ae69353ac831d787)
 - The user never sees this source URL
 - You have to define a table for these PDF exports
+- Make sure the table contains the "status" column (pending, completed, failed, etc.)
 - Download URL expires in 120 seconds
 - As soon as the database is populated with this new PDF export, we have to update the UI to show the new Download URL
 - Make use of NextJS best practices
