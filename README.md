@@ -37,14 +37,6 @@ A simple page that has a button, that triggers a background job. This background
 ✅ **Error Handling** - Comprehensive error states and messages  
 ✅ **Real Database** - PostgreSQL with Docker support  
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+ installed
-- Docker and Docker Compose (for database)
-- Git
-
 ### Quick Start (Recommended)
 
 #### Option 1: Automated Setup
