@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { QueryClientProviderWrapper } from '@/lib/query-client';
 
 export const metadata: Metadata = {
-  title: 'Next.js Candidate Project',
-  description: 'A Next.js project for interview candidates',
+  title: 'PDF Export System',
+  description: 'A PDF export system with temporary download links',
 };
 
 export default function RootLayout({
@@ -13,7 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className='antialiased'>{children}</body>
+      <body className='antialiased'>
+        <QueryClientProviderWrapper>
+          {children}
+        </QueryClientProviderWrapper>
+      </body>
     </html>
   );
 }
